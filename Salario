@@ -1,0 +1,34 @@
+programa
+{
+  funcao inicio()
+  {
+    cadeia resposta
+    real salario
+
+    escreva("Você vai receber o salário este mês? (sim/não): ")
+    leia(resposta)
+
+    se (resposta == "sim" ou resposta == "Sim")
+    {
+      escreva("Qual é o valor do seu salário? R$ ")
+      leia(salario)
+
+      se (salario > 0)
+      {
+        escreva("Você receberá R$ ", salario, " este mês.")
+      }
+      senao
+      {
+        escreva("Valor de salário inválido.")
+      }
+    }
+    senao se (resposta == "não" ou resposta == "Não")
+    {
+      escreva("Você não receberá o salário este mês.")
+    }
+    senao
+    {
+      escreva("Resposta inválida. Por favor, responda 'sim' ou 'não'.")
+    }
+  }
+}
