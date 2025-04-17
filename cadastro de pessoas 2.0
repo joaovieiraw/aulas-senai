@@ -1,0 +1,42 @@
+programa {
+  funcao inicio() {
+    cadeia nome
+    inteiro idade
+    inteiro peso
+    cadeia cidade
+    inteiro numero
+    
+    escreva("ola, bem vindo ao cadastro online de pessoa")
+    escreva("\n por favor, digite seu nome ")
+    
+    leia(nome)
+   
+    escreva("qual sua idade? ")
+   
+    leia(idade)
+    
+    se (idade <0)
+    escreva("idade invalida ")
+    senao
+    escreva("qual seu peso? ")
+    leia(peso)
+    se (peso <0)
+    escreva("peso invalido")
+    escreva("qual sua cidade? ")
+    leia(cidade)
+    
+    escreva("qual seu numero? ")
+    leia(numero)
+    
+    escreva("seu nome:", nome)
+    
+    escreva("\nsua idade:", idade)
+    
+    escreva("\nseu peso:", peso)
+    
+    escreva("\nsua cidade:", cidade)
+    
+    escreva("\nseu numero:", numero)
+
+  }
+}
