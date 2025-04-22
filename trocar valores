@@ -1,0 +1,17 @@
+programa {
+  funcao inicio() {
+    inteiro a
+    inteiro b
+    inteiro auxiliar
+    escreva("digite valor de a: ")
+    leia(a)
+    escreva("escreva valor de b: ")
+    leia(b)
+    auxiliar = a
+    a = b
+    b = auxiliar
+    escreva("apos a troca:\n")
+    escreva("valor de A:", a,"\n")
+    escreva("valor de B:", b,"\n")
+  }
+}
