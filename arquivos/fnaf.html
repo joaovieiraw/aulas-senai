@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FNAF - Sobreviva à Noite!</title>
+  <style>
+    body {
+      background-color: #1b1b1b;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 36px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    #game-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      position: relative;
+    }
+    #camera-feed {
+      width: 300px;
+      height: 200px;
+      background-color: #333;
+      border: 5px solid #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #camera-feed img {
+      width: 100%;
+      height: auto;
+      opacity: 0.8;
+      transition: opacity 0.5s ease;
+    }
+    #controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+    }
+    button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #666;
+    }
+    #status {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 18px;
+      z-index: 10;
+    }
+    #susto {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    #susto img {
+      width: 60%;
+      height: auto;
+      border: 5px solid white;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FNAF - Sobreviva à Noite!</h1>
+  <div id="game-container">
+    <div id="camera-feed">
+      <img id="camera-image" src="https://www.pngegg.com/en/png-irxrh" alt="Câmera">
+    </div>
+    <div id="controls">
+      <button onclick="mudarCamera()">Trocar Câmera</button>
+      <button onclick="fecharPorta()">Fechar Porta</button>
+    </div>
+    <div id="status">
+      <p>Noite: <span id="noite">1</span></p>
+      <p>Hora: <span id="hora">12</span>:00</p>
+    </div>
+  </div>
+  <div id="susto">
+    <img src="https://www.pngegg.com/en/png-irxrh" alt="Jumpscare">
+    <p>👻 BOO!</p>
+  </div>
+  <script>
+    let cameraAtual = 1;
+    let hora = 12;
+    let noite = 1;
+
+    function mudarCamera() {
+      cameraAtual = (cameraAtual % 3) + 1;
+      document.getElementById("camera-image").src = `https://www.pngegg.com/en/png-irxrh`;
+      if (Math.random() < 0.3) {
+        document.getElementById("camera-feed").style.backgroundColor = 'red';
+      } else {
+        document.getElementById("camera-feed").style.backgroundColor = '#333';
+      }
+    }
+
+    function fecharPorta() {
+      if (Math.random() < 0.2) {
+        mostrarSusto();
+      } else {
+        alert("Porta fechada com sucesso!");
+      }
+    }
+
+    function mostrarSusto() {
+      const susto = document.getElementById("susto");
+      susto.style.display = "flex";
+      setTimeout(() => {
+        susto.style.display = "none";
+        reiniciarJogo();
+      }, 2000);
+    }
+
+    function reiniciarJogo() {
+      hora = 12;
+      noite = 1;
+      document.getElementById("noite").textContent = noite;
+      document.getElementById("hora").textContent = hora;
+      alert("Você perdeu! Reiniciando...");
+    }
+
+    function passarTempo() {
+      hora++;
+      if (hora > 6) {
+        hora = 12;
+        noite++;
+        alert("Você sobreviveu à noite!");
+      }
+      document.getElementById("hora").textContent = hora;
+    }
+
+    setInterval(passarTempo, 20000); // 20 segundos por "hora"
+  </script>
+</body>
+</html>
