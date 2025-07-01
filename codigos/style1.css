@@ -1,0 +1,34 @@
+body{
+    background-image: url(https://radioaltouruguai.com.br/wp-content/uploads/2024/08/07161201_29393_GDO.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-input{
+    
+    display: block;
+    margin: 5px;
+    color: red;
+    height: 50px;
+    width: 600px;
+}
+
+.btn{
+    position: relative;
+    display: block;
+    margin: 5px;
+    color: red;
+}
+
+.btn:hover{
+    transform: scale(1.3);
+    color: black;
+}
+
+.texthelp{
+    height: 20px;
+    width: 600px;
+    color: rgb(255, 255, 0);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    -webkit-text-stroke: 0.9px rgba(252, 0, 0, 0.766)
+}
