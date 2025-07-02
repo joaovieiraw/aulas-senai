@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Equipes de Resposta</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestão de Equipes de Resposta</h1>
+
+        <section>
+            <h2>Adicionar Nova Equipe</h2>
+            <input type="text" id="nomeEquipe" placeholder="Nome da Equipe">
+            <input type="text" id="diaPlantao" placeholder="Dia de Plantão">
+            <button onclick="adicionarEquipe()">Adicionar</button>
+        </section>
+
+        <section>
+            <h2>Equipes Ativas</h2>
+            <div id="lista-equipes"></div>
+        </section>
+
+        <section>
+            <h2>Enviar para Ocorrência</h2>
+            <select id="selectEquipe">
+                <option value="">Selecione uma equipe disponível</option>
+            </select>
+            <button onclick="enviarEquipe()">Enviar</button>
+            <p id="mensagemEnvio"></p>
+        </section>
+
+        <section>
+            <h2>Histórico de Ocorrências</h2>
+            <ul id="historicoOcorrencias"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

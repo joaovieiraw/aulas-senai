@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Central de Atendimento</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f0f8ff;
+      padding: 30px;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #3498db;
+      color: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.6em;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #217dbb;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      resize: vertical;
+    }
+    #listaChamadas {
+      margin-top: 25px;
+      max-height: 250px;
+      overflow-y: auto;
+      background: #eef6fb;
+      border-radius: 8px;
+      padding: 15px;
+    }
+    #listaChamadas ul {
+      list-style: none;
+      padding: 0;
+    }
+    #listaChamadas li {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Central de Atendimento</h1>
+  </header>
+  <section>
+    <p>Registre e acompanhe as chamadas de emergência em tempo real.</p>
+
+    <form id="formChamada">
+      <h3>Registrar Chamada</h3>
+      <input type="text" id="nomeCliente" placeholder="Nome do cidadão" required />
+      <select id="tipoOcorrencia" required>
+        <option value="">Tipo de ocorrência</option>
+        <option value="incendio">Incêndio</option>
+        <option value="resgate">Resgate</option>
+        <option value="outro">Outro</option>
+      </select>
+      <textarea id="descricao" rows="3" placeholder="Descrição da ocorrência" required></textarea>
+      <button type="submit">Registrar</button>
+    </form>
+
+    <button onclick="listarChamadas()">Listar Chamadas</button>
+    <div id="listaChamadas"></div>
+
+    <button onclick="logout()" style="margin-top: 25px;">Sair</button>
+  </section>
+
+  <script>
+    const form = document.getElementById('formChamada');
+    const listaDiv = document.getElementById('listaChamadas');
+
+
+    let chamadas = JSON.parse(localStorage.getItem('chamadas')) || [];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const nome = document.getElementById('nomeCliente').value.trim();
+      const tipo = document.getElementById('tipoOcorrencia').value;
+      const descricao = document.getElementById('descricao').value.trim();
+
+      if (!nome || !tipo || !descricao) {
+        alert('Preencha todos os campos');
+        return;
+      }
+
+      const novaChamada = {
+        id: Date.now(),
+        nome,
+        tipo,
+        descricao,
+        data: new Date().toLocaleString()
+      };
+
+      chamadas.push(novaChamada);
+      localStorage.setItem('chamadas', JSON.stringify(chamadas));
+
+      alert('Chamada registrada com sucesso!');
+
+      form.reset();
+      listarChamadas();
+    });
+
+    function listarChamadas() {
+      if (chamadas.length === 0) {
+        listaDiv.innerHTML = "<p>Nenhuma chamada registrada.</p>";
+        return;
+      }
+      let html = '<ul>';
+      chamadas.forEach(chamada => {
+        html += `<li><strong>${chamada.nome}</strong> - ${chamada.tipo} <br/>
+                 <em>${chamada.descricao}</em> <br/>
+                 <small>Registrado em: ${chamada.data}</small></li>`;
+      });
+      html += '</ul>';
+      listaDiv.innerHTML = html;
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'acesso.html';
+    }
+
+
+    listarChamadas();
+  </script>
+</body>
+</html>
+

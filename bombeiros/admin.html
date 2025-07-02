@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Administrador</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #2980b9, #6dd5fa);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px #000000aa;
+    }
+    p {
+      font-size: 1.3em;
+      max-width: 600px;
+      text-align: center;
+    }
+    button {
+      margin-top: 30px;
+      background: white;
+      color: #2980b9;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #dceefc;
+    }
+    form {
+      margin-top: 30px;
+      background: rgba(255 255 255 / 0.15);
+      padding: 20px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      color: white;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      margin: 8px 0 15px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    #listaUsuarios {
+      margin-top: 30px;
+      background: rgba(255 255 255 / 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      width: 350px;
+      max-height: 200px;
+      overflow-y: auto;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Área do Administrador</h1>
+  <p>Gerencie usuários, equipes, permissões e relatórios do sistema.</p>
+
+  <form id="formUsuario">
+    <h3>Adicionar Usuário</h3>
+    <input type="text" id="nomeUsuario" placeholder="Nome do usuário" required />
+    <select id="perfilUsuario" required>
+      <option value="">Selecione o perfil</option>
+      <option value="cidadao">Cidadão</option>
+      <option value="central">Central de Atendimento</option>
+      <option value="bombeiros">Bombeiros</option>
+      <option value="admin">Administrador</option>
+    </select>
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <button onclick="listarUsuarios()">Listar Usuários</button>
+  <div id="listaUsuarios"></div>
+
+  <button onclick="logout()">Sair</button>
+
+  <script>
+    const form = document.getElementById('formUsuario');
+    const listaDiv = document.getElementById('listaUsuarios');
+
+
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = document.getElementById('nomeUsuario').value.trim();
+      const perfil = document.getElementById('perfilUsuario').value;
+
+      if (!nome || !perfil) {
+        alert('Preencha nome e perfil');
+        return;
+      }
+
+      usuarios.push({ nome, perfil });
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      alert(`Usuário ${nome} adicionado com perfil ${perfil}`);
+      form.reset();
+      listarUsuarios();
+    });
+
+    function listarUsuarios() {
+      if (usuarios.length === 0) {
+        listaDiv.innerHTML = "<p>Nenhum usuário cadastrado.</p>";
+        return;
+      }
+      let html = '<ul>';
+      usuarios.forEach((u, i) => {
+        html += `<li>${i + 1}. ${u.nome} — <strong>${u.perfil}</strong></li>`;
+      });
+      html += '</ul>';
+      listaDiv.innerHTML = html;
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'acesso.html';
+    }
+
+
+    listarUsuarios();
+  </script>
+</body>
+</html>

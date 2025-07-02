@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestão de Equipes e Relatórios</title>
+    <link rel="stylesheet" href="desenho.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Gestão de Equipes de Resposta</h1>
+
+        <section>
+            <h2>Adicionar Nova Equipe</h2>
+            <input type="text" id="nomeEquipe" placeholder="Nome da Equipe" />
+            <input type="text" id="diaPlantao" placeholder="Dia de Plantão" />
+            <button onclick="adicionarEquipe()">Adicionar</button>
+        </section>
+
+        <section>
+            <h2>Equipes Ativas</h2>
+            <div id="lista-equipes"></div>
+        </section>
+
+        <section>
+            <h2>Enviar para Ocorrência</h2>
+            <select id="selectEquipe">
+                <option value="">Selecione uma equipe disponível</option>
+            </select>
+            <button onclick="enviarEquipe()">Enviar</button>
+            <p id="mensagemEnvio"></p>
+        </section>
+
+        <section>
+            <h2>Histórico de Ocorrências</h2>
+            <ul id="historicoOcorrencias"></ul>
+        </section>
+
+        <section>
+            <h2>Registrar Nova Ocorrência</h2>
+            <input type="text" id="tipoOcorrencia" placeholder="Tipo (ex: Incêndio)" />
+            <input type="text" id="regiaoOcorrencia" placeholder="Região (ex: Zona Sul)" />
+            <input type="number" id="tempoResposta" placeholder="Tempo de Resposta (min)" />
+            <button onclick="registrarOcorrencia()">Registrar</button>
+        </section>
+
+        <section>
+            <h2>Relatórios e Estatísticas</h2>
+            <div id="relatorio">
+                <p><strong>Incêndios por Região:</strong></p>
+                <ul id="incendiosRegiao"></ul>
+
+                <p><strong>Tempo Médio de Resposta:</strong> <span id="mediaTempo">0</span> minutos</p>
+
+                <p><strong>Ocorrências por Tipo:</strong></p>
+                <ul id="ocorrenciasTipo"></ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="cerebro.js"></script>
+</body>
+</html>

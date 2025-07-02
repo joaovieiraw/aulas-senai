@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://www.ssp.am.gov.br/wp-content/uploads/2023/09/ATENDIMENTOS-URs_FOTO-CBMAM_2-1024x513.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container, .painel {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    width: 350px;
+    text-align: center;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #conteudoPerfil {
+    margin: 20px 0;
+    text-align: left;
+    font-size: 15px;
+    color: #333;
+  }
+  
