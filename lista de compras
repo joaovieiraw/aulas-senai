@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+        }
+
+        .texto1{
+            font-family: fantasy;
+            color: white;
+            -webkit-text-stroke-width: 0.99px;
+  -webkit-text-stroke-color: black;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 class="texto1">Lista de Compras</h1>
+    <form id="form">
+        <input type="text" id="item" placeholder="Digite o item">
+        <button id="adicionar">Adicionar</button>
+    </form>
+    <ul id="lista"></ul>
+    <button id="limpar">Limpar Lista</button>
+
+    <script>
+        let lista = [];
+const form = document.getElementById('form');
+const itemInput = document.getElementById('item');
+const listaElement = document.getElementById('lista');
+const limparButton = document.getElementById('limpar');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const item = itemInput.value.trim();
+    if (item && lista.length < 5) {
+        lista.push(item);
+        itemInput.value = '';
+        atualizarLista();
+    } else if (lista.length >= 5) {
+        alert('Máximo de 5 itens alcançado!');
+    }
+});
+
+listaElement.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        const indice = e.target.dataset.indice;
+        lista.splice(indice, 1);
+        atualizarLista();
+    }
+});
+
+limparButton.addEventListener('click', () => {
+    lista = [];
+    atualizarLista();
+});
+
+function atualizarLista() {
+    listaElement.innerHTML = '';
+    lista.forEach((item, indice) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        const button = document.createElement('button');
+        button.textContent = 'Remover';
+        button.dataset.indice = indice;
+        li.appendChild(button);
+        listaElement.appendChild(li);
+    });
+}
+    </script>
+</body>
+</html>
