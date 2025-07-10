@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .remover:hover{
+            color: black;
+            background-color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>cadastro de notas</h2>
+    <form id="form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <br>
+        <label for="notas">Quantidade de notas(separado por virgula, espaço em branco = 0)</label>
+        <input type="text" id="notas" required>
+        <br>
+        <button id="cadastrar">cadastrar e calcular</button>
+    </form>
+    <table id="tabela">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade de Notas</th>
+                <th>Notas</th>
+                <th>Média</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+    </table>
+
+    <button onclick="atualizar()" class="remover">REMOVER TUDO</button>
+
+    <script>
+        let alunos = [];
+
+document.getElementById('cadastrar').addEventListener('click', (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const notas = document.getElementById('notas').value.split(',').map(Number);
+    const media = notas.reduce((a, b) => a + b, 0) / notas.length;
+    const situacao = media >= 6 ? 'Aprovado' : 'Reprovado';
+    alunos.push({
+        nome,
+        quantidadeNotas: notas.length,
+        notas,
+        media,
+        situacao
+    });
+    atualizarTabela();
+});
+
+function atualizarTabela() {
+    const corpoTabela = document.getElementById('corpo-tabela');
+    corpoTabela.innerHTML = '';
+    alunos.forEach((aluno) => {
+        const linha = document.createElement('tr');
+        linha.innerHTML = `
+            <td>${aluno.nome}</td>
+            <td>${aluno.quantidadeNotas}</td>
+            <td>${aluno.notas.join(', ')}</td>
+            <td>${aluno.media.toFixed(2)}</td>
+            <td>${aluno.situacao}</td>
+        `;
+        corpoTabela.appendChild(linha);
+    });
+}
+
+function atualizar(){
+    window.location.reload(true);
+}
+    </script>
+
+    
+</body>
+</html>
