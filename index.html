@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="titulo">Cadastro de Alunos</h1>
+    <form id="form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <br>
+        <label for="notas">Notas (separadas por vírgula, espaço em branco = 0):</label>
+        <input type="text" id="notas" required>
+        <br>
+        <button id="cadastrar" class="botaocadastrar">Cadastrar</button>
+        <button onclick="remover()" class="remover">REMOVER NOTAS</button>
+    </form>
+    <table id="tabela">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade de Notas</th>
+                <th>Notas</th>
+                <th>Média</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
