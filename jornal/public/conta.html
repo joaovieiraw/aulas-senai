@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conta do Aluno — Jornal Nova Era</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <img class="top-logo" src="logo.png" alt="Nova Era" />
+      <h1 class="top-title">Jornal Nova Era</h1>
+    </div>
+
+    <nav class="tabs" aria-label="Navegação principal">
+      <a class="tab" href="index.html#inicio">Voltar ao Jornal</a>
+      <a class="tab tab-admin" href="login.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="view is-visible">
+      <div class="feature">
+        <h2 class="feature-title">Conta do Aluno</h2>
+        <p class="feature-subtitle">
+          Crie uma conta ou faça login para <strong>curtir 💜</strong> e <strong>comentar</strong> nas notícias.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+
+          <div id="statusBox" class="glow-line" style="display:none;"></div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" type="email" placeholder="ex: aluno@gmail.com" autocomplete="email" />
+            </div>
+
+            <div class="field">
+              <label for="senha">Senha</label>
+              <input id="senha" type="password" placeholder="Crie uma senha" autocomplete="current-password" />
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="btnCriar">Criar conta</button>
+            <button class="btn" id="btnEntrar">Entrar</button>
+            <button class="btn btn-ghost" id="btnSair" style="display:none;">Sair</button>
+          </div>
+
+          <div class="hint">
+            <p>
+              ⚠️ Dica: use um e-mail real para recuperar acesso depois.
+            </p>
+            <p>
+              Depois de entrar, volte para <strong>Notícias</strong> e você vai ver o botão de curtir e a caixa de comentários.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    © 2026 Jornal Nova Era — A vez e a voz dos estudantes.
+  </footer>
+
+  <script type="module" src="conta.js"></script>
+</body>
+</html>
+

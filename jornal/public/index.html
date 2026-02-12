@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornal Nova Era</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- AdSense (global) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018277933464551"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <img class="top-logo" src="logo.png" alt="Nova Era" />
+      <h1 class="top-title">Jornal Nova Era</h1>
+    </div>
+
+    <nav class="tabs" aria-label="Navegação principal">
+      <button class="tab is-active" data-view="inicio">Início</button>
+      <button class="tab" data-view="noticias">Notícias</button>
+      <button class="tab" data-view="enem">ENEM</button>
+      <button class="tab" data-view="comemoracoes">Comemorações</button>
+      <button class="tab" data-view="membros">Membros</button>
+      <a class="tab tab-admin" href="login.html">Admin</a>
+      <a class="tab" href="conta.html">Conta</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- INÍCIO -->
+    <section id="view-inicio" class="view is-visible">
+      <div class="feature">
+        <h2 class="feature-title">Bem-vindo ao Jornal Nova Era</h2>
+        <p class="feature-subtitle">A vez e a voz dos estudantes.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+          <p>O Jornal do gremio Nova Era nasce com um propósito claro: dar voz aos estudantes, fortalecer a união e transformar a comunicação dentro da nossa escola. Acreditamos que informação gera participação, e participação gera mudança.</p>
+
+          <p>Criamos este espaço para divulgar notícias, eventos, projetos, conquistas e tudo o que faz parte da nossa realidade escolar. Queremos que cada aluno se sinta representado, ouvido e incluído nas decisões que constroem o presente e o futuro da nossa comunidade.</p>
+
+          <p>A Nova Era simboliza renovação, protagonismo e coragem para fazer diferente. Este jornal não é apenas um site — é um espaço de expressão, transparência e conexão entre o Grêmio e os estudantes.</p>
+
+          <h3 class="subhead">Este projeto foi desenvolvido por:</h3>
+
+          <div class="chips">
+            <span class="chip">Clara Luisa de Oliveira Morganti</span>
+            <span class="chip">João Vieira Waicampe</span>
+          </div>
+
+          <p>Agradecemos por acessar o nosso site e fazer parte dessa iniciativa. Sua presença, sua opinião e sua participação são fundamentais para que possamos crescer juntos.</p>
+
+          <p class="glow-line">✨ Aqui começa uma nova história.<br><strong>Aqui começa a Nova Era. 💜</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS -->
+    <section id="view-noticias" class="view">
+      <div class="section-head">
+        <h2>Notícias</h2>
+        <p>Atualizações e comunicados do grêmio.</p>
+      </div>
+
+      <div id="noticias-manchete" class="feature"></div>
+      <div id="noticias-grid" class="grid"></div>
+    </section>
+
+    <!-- ENEM -->
+    <section id="view-enem" class="view">
+      <div class="section-head">
+        <h2>ENEM</h2>
+        <p>Informações e dicas para os estudantes.</p>
+      </div>
+
+      <div id="enem-grid" class="grid"></div>
+    </section>
+
+    <!-- COMEMORAÇÕES -->
+    <section id="view-comemoracoes" class="view">
+      <div class="section-head">
+        <h2>Comemorações</h2>
+        <p>Datas especiais, eventos e homenagens.</p>
+      </div>
+
+      <div id="comemoracoes-grid" class="grid"></div>
+    </section>
+
+    <!-- MEMBROS -->
+    <section id="view-membros" class="view">
+      <div class="section-head">
+        <h2>Membros</h2>
+        <p>Quem faz parte da Nova Era.</p>
+      </div>
+
+      <div id="membros-grid" class="grid members"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    © 2026 Jornal Nova Era — A vez e a voz dos estudantes.
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

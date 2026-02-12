@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Painel Administrativo</title>
+</head>
+
+<body>
+
+<h2>Painel Administrativo</h2>
+
+<input type="text" id="titulo" placeholder="Título"><br><br>
+
+<textarea id="conteudo" placeholder="Conteúdo"></textarea><br><br>
+
+<select id="categoria">
+  <option value="noticias">Notícias</option>
+  <option value="enem">ENEM</option>
+  <option value="comemoracoes">Comemorações</option>
+</select><br><br>
+
+<button onclick="publicar()">Publicar</button>
+
+
+
+
+<hr>
+
+<h3>Adicionar Membro</h3>
+
+<input type="text" id="nomeMembro" placeholder="Nome">
+<input type="text" id="cargoMembro" placeholder="Cargo">
+<input type="text" id="fotoMembro" placeholder="Link da Foto">
+
+
+<button onclick="adicionarMembro()">Salvar Membro</button>
+
+
+
+<br><br>
+<button onclick="logout()">Sair</button>
+
+
+<script type="module" src="admin.js"></script>
+
+
+</body>
+</html>
+
+
+
